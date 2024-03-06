@@ -108,7 +108,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         detailsVC.humidity = String(Int(citiesApiMass[indexPath.row].main.humidity))
         detailsVC.pressure = String(Int(citiesApiMass[indexPath.row].main.pressure))
         detailsVC.feelsLike = String(Int(citiesApiMass[indexPath.row].main.feelsLike))
-        
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
