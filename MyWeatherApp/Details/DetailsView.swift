@@ -107,7 +107,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Temp"
-//        label.textAlignment = .center
+        //        label.textAlignment = .center
         return label
     }()
     
