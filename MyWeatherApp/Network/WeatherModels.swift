@@ -22,7 +22,7 @@ struct Main: Decodable {
     let tempMax: Double
     let pressure: Double
     let humidity: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"

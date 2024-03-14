@@ -10,7 +10,7 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     lazy var mainView = DetailsView(nameCity: nameCity, tempCity: tempCity, tempMin: tempMin, tempMax: tempMax, feelsLike: feelsLike, humidity: humidity, pressure: pressure)
-
+    
     var nameCity: String?, tempCity: String?, tempMin: String?, tempMax: String?, feelsLike: String?, humidity: String?, pressure: String?
     
     override func loadView() {
