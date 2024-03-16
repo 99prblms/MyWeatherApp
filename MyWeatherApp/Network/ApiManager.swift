@@ -47,7 +47,6 @@ class ApiManager {
         return URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 completion(data, error)
-                //                print(String(data: data!, encoding: String.Encoding(rawValue: NSUTF8StringEncoding)) as Any)
             }
         }
     }
