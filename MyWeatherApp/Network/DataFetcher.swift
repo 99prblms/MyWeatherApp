@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DataFetcher {
     
@@ -17,7 +18,6 @@ class DataFetcher {
                 print("Error received reauesting data: \(error.localizedDescription)")
                 completion(nil)
             }
-            
             let decode = self.decodeJSON(type: WeatherData.self, from: data)
             completion(decode)
         }
