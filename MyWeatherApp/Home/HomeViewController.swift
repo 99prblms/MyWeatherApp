@@ -30,7 +30,6 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
     }
     
-    
     @objc func addCity() {
         let addAlert = UIAlertController(title: "Введите название города", message: "", preferredStyle: .alert)
         addAlert.addTextField()
@@ -57,7 +56,6 @@ class HomeViewController: UIViewController {
         addAlert.addAction(cancelButton)
         present(addAlert, animated: true)
     }
-    
     public func checkBD() {
         let mass = CoreDataManager.shared.fetchCitysBD()
         if !mass.isEmpty {
@@ -111,3 +109,4 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
+
