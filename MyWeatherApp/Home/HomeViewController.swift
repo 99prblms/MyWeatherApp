@@ -31,31 +31,59 @@ class HomeViewController: UIViewController {
     }
     
     @objc func addCity() {
-        let addAlert = UIAlertController(title: "Введите название города", message: "", preferredStyle: .alert)
-        addAlert.addTextField()
-        let saveButton = UIAlertAction(title: "Добавить", style: .default) { [weak self] _ in
-            if let textName = addAlert.textFields?.last?.text {
-                let cityID = self?.id ?? UUID()
-                self?.networkData.fetchCity(searchCity: textName) { cityResults in
-                    if let city = cityResults {
-                        CoreDataManager.shared.createCity(cityID, textName.capitalized)
-                        self?.citiesApiMass.append(city)
-                        self?.mainView.tableView.reloadData()
-                    } else {
-                        let errorAlert = UIAlertController(title: "Ошибка", message: "Город не найден", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        errorAlert.addAction(okButton)
-                        self?.present(errorAlert, animated: true, completion: nil)
-                    }
-                }
-            }
-        }
-        
-        addAlert.addAction(saveButton)
-        let cancelButton = UIAlertAction(title: "Отмена", style: .default)
-        addAlert.addAction(cancelButton)
+        let addAlert = createAddAlertController()
         present(addAlert, animated: true)
     }
+    
+    private func createAddAlertController() -> UIAlertController {
+        let addAlert = UIAlertController(title: "Введите название города", message: "", preferredStyle: .alert)
+        addAlert.addTextField()
+        let saveButton = createSaveAction(for: addAlert)
+        let cancelButton = createCancelAction()
+        addAlert.addAction(saveButton)
+        addAlert.addAction(cancelButton)
+        return addAlert
+    }
+    
+    private func createSaveAction(for alertController: UIAlertController) -> UIAlertAction {
+        return UIAlertAction(title: "Добавить", style: .default) { [weak self] _ in
+            self?.handleSaveAction(for: alertController)
+        }
+    }
+    
+    private func handleSaveAction(for alertController: UIAlertController) {
+        guard let cityName = alertController.textFields?.last?.text else { return }
+        let cityID = self.id
+        fetchCityAndHandleResult(cityName: cityName, cityID: cityID)
+    }
+    
+    private func fetchCityAndHandleResult(cityName: String, cityID: UUID) {
+        networkData.fetchCity(searchCity: cityName) { [weak self] cityResults in
+            if let city = cityResults {
+                self?.handleCityFound(cityID: cityID, cityName: cityName, city: city)
+            } else {
+                self?.handleCityNotFound()
+            }
+        }
+    }
+    
+    private func handleCityFound(cityID: UUID, cityName: String, city: WeatherData) {
+        CoreDataManager.shared.createCity(cityID, cityName.capitalized)
+        self.citiesApiMass.append(city)
+        self.mainView.tableView.reloadData()
+    }
+    
+    private func handleCityNotFound() {
+        let errorAlert = UIAlertController(title: "Ошибка", message: "Город не найден", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        errorAlert.addAction(okButton)
+        self.present(errorAlert, animated: true, completion: nil)
+    }
+    
+    private func createCancelAction() -> UIAlertAction {
+        return UIAlertAction(title: "Отмена", style: .default)
+    }
+    
     public func checkBD() {
         let mass = CoreDataManager.shared.fetchCitysBD()
         if !mass.isEmpty {
