@@ -9,15 +9,13 @@ import UIKit
 import CoreData
 
 //MARK: - CRUD CoreData
+
 public final class CoreDataManager: NSObject {
-    
     public static let shared = CoreDataManager()
     private override init() {}
-    
     private var appDelegate: AppDelegate {
         UIApplication.shared.delegate as! AppDelegate
     }
-    
     private var context: NSManagedObjectContext {
         appDelegate.persistentContaner.viewContext
     }
@@ -72,9 +70,9 @@ public final class CoreDataManager: NSObject {
         }
         appDelegate.saveContext()
     }
+    
     public func deleteCity(with cityNamed: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-        //            fetchRequest.predicate = NSPredicate(format: "cityNamed == %@", "cityNamed", cityNamed as CVarArg)
         do {
             guard let citys = try? context.fetch(fetchRequest) as? [City],
                   let city = citys.first(where: {$0.cityNamed == cityNamed}) else { return }

@@ -13,10 +13,8 @@ import CoreData
 public class City: NSManagedObject { }
 
 extension City {
-
     @NSManaged public var id: UUID
     @NSManaged public var cityNamed: String?
-
 }
 
 extension City : Identifiable {

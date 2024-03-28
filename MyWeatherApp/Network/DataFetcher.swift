@@ -33,5 +33,5 @@ class DataFetcher {
             print("Failed to decode JSON", jsonError)
             return nil
         }
-    }    
+    }
 }
