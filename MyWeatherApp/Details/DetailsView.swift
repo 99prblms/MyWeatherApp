@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsView: UIView {
     
-    public var cityLabelView: UILabel = {
+    private var cityLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 50)
         label.text = "City"
@@ -17,7 +17,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var tempLabelView: UILabel = {
+    private var tempLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 100)
         label.text = "Temp"
@@ -25,7 +25,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var cityNameLabelView: UILabel = {
+    private var cityNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.textAlignment = .left
@@ -34,7 +34,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var tempNameLabelView: UILabel = {
+    private var tempNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.textAlignment = .left
@@ -43,35 +43,35 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var tempMinLabelView: UILabel = {
+    private var tempMinLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Temp"
         return label
     }()
     
-    public var tempMinNameLabelView: UILabel = {
+    private var tempMinNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Мин"
         return label
     }()
     
-    public var tempMaxLabelView: UILabel = {
+    private var tempMaxLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Temp"
         return label
     }()
     
-    public var tempMaxNameLabelView: UILabel = {
+    private var tempMaxNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 32)
         label.text = "Макс"
         return label
     }()
     
-    public var feelsLikeLabelView: UILabel = {
+    private var feelsLikeLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "Temp"
@@ -79,7 +79,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var feelsLikeNameLabelView: UILabel = {
+    private var feelsLikeNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "По ощущениям"
@@ -87,7 +87,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var humidityLabelView: UILabel = {
+    private var humidityLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Temp"
@@ -95,7 +95,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var humidityNameLabelView: UILabel = {
+    private var humidityNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Влажность"
@@ -103,20 +103,57 @@ class DetailsView: UIView {
         return label
     }()
     
-    public var pressureLabelView: UILabel = {
+    private var pressureLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Temp"
-        //        label.textAlignment = .center
         return label
     }()
     
-    public var pressureNameLabelView: UILabel = {
+    private var pressureNameLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Давление"
         return label
     }()
+    
+    // MARK: - Initializers
+    
+    init(nameCity: String?, tempCity: String?, tempMin: String?, tempMax: String?, feelsLike: String?, humidity: String?, pressure: String?) {
+        super.init(frame: .zero)
+        self.backgroundColor = .systemBackground
+        
+        addSubviews()
+        setupCityLabelView()
+        setupTempLabelView()
+        setupTempMinLabelView()
+        setupTempMinNameLabelView()
+        setupTempMaxLabelView()
+        setupTempMaxNameLabelView()
+        setupHumidityLabelView()
+        setupHumidityNameLabelView()
+        setupPressureLabelView()
+        setupPressureNameLabelView()
+        setupFeelsLikeLabelView()
+        setupFeelsLikeNameLabelView()
+        
+        cityLabelView.text = nameCity
+        tempLabelView.text = tempCity
+        tempMinLabelView.text = tempMin
+        tempMaxLabelView.text = tempMax
+        humidityLabelView.text = humidity
+        feelsLikeLabelView.text = feelsLike
+        pressureLabelView.text = pressure
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addSubviews() {
+        [cityLabelView, tempLabelView, tempMinLabelView, tempMinNameLabelView, tempMaxLabelView, tempMaxNameLabelView, humidityLabelView, humidityNameLabelView, pressureLabelView, pressureNameLabelView, feelsLikeLabelView, feelsLikeNameLabelView].forEach { addSubview($0) }
+    }
+   
+// MARK: - Private Methods
     
     func setupTempMinNameLabelView() {
         tempMinNameLabelView.translatesAutoresizingMaskIntoConstraints = false
@@ -270,50 +307,6 @@ class DetailsView: UIView {
             tempNameLabelView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             tempNameLabelView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         ])
-    }
-    
-    init(nameCity: String?, tempCity: String?, tempMin: String?, tempMax: String?, feelsLike: String?, humidity: String?, pressure: String?) {
-        super.init(frame: .zero)
-        self.backgroundColor = .systemBackground
-        addSubviews()
-        setupCityLabelView()
-        setupTempLabelView()
-        setupTempMinLabelView()
-        setupTempMinNameLabelView()
-        setupTempMaxLabelView()
-        setupTempMaxNameLabelView()
-        setupHumidityLabelView()
-        setupHumidityNameLabelView()
-        setupPressureLabelView()
-        setupPressureNameLabelView()
-        setupFeelsLikeLabelView()
-        setupFeelsLikeNameLabelView()
-        
-        cityLabelView.text = nameCity
-        tempLabelView.text = tempCity
-        tempMinLabelView.text = tempMin
-        tempMaxLabelView.text = tempMax
-        humidityLabelView.text = humidity
-        feelsLikeLabelView.text = feelsLike
-        pressureLabelView.text = pressure
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func addSubviews() {
-        addSubview(cityLabelView)
-        addSubview(tempLabelView)
-        addSubview(tempMinLabelView)
-        addSubview(tempMinNameLabelView)
-        addSubview(tempMaxLabelView)
-        addSubview(tempMaxNameLabelView)
-        addSubview(humidityLabelView)
-        addSubview(humidityNameLabelView)
-        addSubview(pressureLabelView)
-        addSubview(pressureNameLabelView)
-        addSubview(feelsLikeLabelView)
-        addSubview(feelsLikeNameLabelView)
     }
 }
 

@@ -21,6 +21,8 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Initializers
+
     init(nameCity: String? = nil, tempCity: String? = nil, tempMin: String? = nil, tempMax: String? = nil, feelsLike: String? = nil, humidity: String? = nil, pressure: String? = nil) {
         self.nameCity = nameCity
         self.tempCity = tempCity
