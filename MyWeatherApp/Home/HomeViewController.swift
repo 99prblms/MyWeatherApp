@@ -32,31 +32,7 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
     }
     
-    // MARK: - Public Methods
-    
-    func fetchCity(searchCity: String, completion: @escaping (WeatherData?) -> ()) {
-        mainApi.request(searchCity: searchCity) { data, error in
-            if let error = error {
-                print("Error received reauesting data: \(error.localizedDescription)")
-                completion(nil)
-            }
-            let decode = self.networkData.decodeJSON(type: WeatherData.self, from: data)
-            completion(decode)
-        }
-    }
-    
-    @objc func addCity() {
-        let addAlert = createAddAlertController()
-        present(addAlert, animated: true)
-    }
-    
-    public func handleCityNotFound() {
-        let errorAlert = UIAlertController(title: "Ошибка", message: "Город не найден", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-        errorAlert.addAction(okButton)
-        self.present(errorAlert, animated: true, completion: nil)
-    }
-    
+
     // MARK: - Private Methods
     
     private func createAddAlertController() -> UIAlertController {
