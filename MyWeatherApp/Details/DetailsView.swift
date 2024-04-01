@@ -155,7 +155,7 @@ class DetailsView: UIView {
    
 // MARK: - Private Methods
     
-    func setupTempMinNameLabelView() {
+    private func setupTempMinNameLabelView() {
         tempMinNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         tempMinNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -166,7 +166,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupTempMinLabelView() {
+    private func setupTempMinLabelView() {
         tempMinLabelView.translatesAutoresizingMaskIntoConstraints = false
         tempMinLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -177,7 +177,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupTempMaxNameLabelView() {
+    private func setupTempMaxNameLabelView() {
         tempMaxNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         tempMaxNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -188,7 +188,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupTempMaxLabelView() {
+    private func setupTempMaxLabelView() {
         tempMaxLabelView.translatesAutoresizingMaskIntoConstraints = false
         tempMaxLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -199,7 +199,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupFeelsLikeNameLabelView() {
+    private func setupFeelsLikeNameLabelView() {
         feelsLikeNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         feelsLikeNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -210,7 +210,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupFeelsLikeLabelView() {
+    private func setupFeelsLikeLabelView() {
         feelsLikeLabelView.translatesAutoresizingMaskIntoConstraints = false
         feelsLikeLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -221,7 +221,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupHumidityNameLabelView() {
+    private func setupHumidityNameLabelView() {
         humidityNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         humidityNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -232,7 +232,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupHumidityLabelView() {
+    private func setupHumidityLabelView() {
         humidityLabelView.translatesAutoresizingMaskIntoConstraints = false
         humidityLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -243,7 +243,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupPressureNameLabelView() {
+    private func setupPressureNameLabelView() {
         pressureNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         pressureNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -254,7 +254,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupPressureLabelView() {
+    private func setupPressureLabelView() {
         pressureLabelView.translatesAutoresizingMaskIntoConstraints = false
         pressureLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -265,7 +265,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupCityLabelView() {
+    private func setupCityLabelView() {
         cityLabelView.translatesAutoresizingMaskIntoConstraints = false
         cityLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -276,7 +276,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupTempLabelView() {
+    private func setupTempLabelView() {
         tempLabelView.translatesAutoresizingMaskIntoConstraints = false
         tempLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -287,7 +287,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupNameCityLabelView() {
+    private func setupNameCityLabelView() {
         cityNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         cityNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([
@@ -298,7 +298,7 @@ class DetailsView: UIView {
         ])
     }
     
-    func setupNameTempLabelView() {
+    private func setupNameTempLabelView() {
         tempNameLabelView.translatesAutoresizingMaskIntoConstraints = false
         tempNameLabelView.layer.masksToBounds = true
         NSLayoutConstraint.activate([

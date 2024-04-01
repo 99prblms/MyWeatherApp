@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  MyWeatherApp
 //
 //  Created by Владислав Наумов on 19.02.2024.
@@ -17,6 +17,8 @@ class HomeViewController: UIViewController {
     var idMass = [UUID]()
     let id = UUID()
     
+    // MARK: - HomeViewController Life Cycles
+    
     override func loadView() {
         view = mainView
     }
@@ -30,10 +32,14 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
     }
     
+    // MARK: - Public Methods
+    
     @objc func addCity() {
         let addAlert = createAddAlertController()
         present(addAlert, animated: true)
     }
+    
+    // MARK: - Private Methods
     
     private func createAddAlertController() -> UIAlertController {
         let addAlert = UIAlertController(title: "Введите название города", message: "", preferredStyle: .alert)

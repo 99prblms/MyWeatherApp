@@ -13,6 +13,8 @@ class DetailsViewController: UIViewController {
     
     var nameCity: String?, tempCity: String?, tempMin: String?, tempMax: String?, feelsLike: String?, humidity: String?, pressure: String?
     
+    // MARK: - DetailViewController Life Cycles
+    
     override func loadView() {
         view = mainView
     }
