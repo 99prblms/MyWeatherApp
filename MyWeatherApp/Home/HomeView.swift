@@ -9,21 +9,14 @@ import UIKit
 
 class HomeView: UIView {
     
-    public var tableView: UITableView = {
+    var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
-    func setupTableView() {
-        tableView.backgroundColor = .systemBackground
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
+    // MARK: - Initializers
+    
     init() {
         super.init(frame: .zero)
         addSubviews()
@@ -33,7 +26,20 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         addSubview(tableView)
     }
+    
+    private func setupTableView() {
+        tableView.backgroundColor = .systemBackground
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
 }

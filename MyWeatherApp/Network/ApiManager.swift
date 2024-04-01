@@ -20,6 +20,8 @@ class ApiManager {
         task.resume()
     }
     
+    // MARK: - Public Methods
+    
     private func apiKey() -> [String:String]? {
         var apiKey = [String:String]()
         apiKey["appid"] = "fc7ce11a14f7530bcde78f6f770cfad1"
