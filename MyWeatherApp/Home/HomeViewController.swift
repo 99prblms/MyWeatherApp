@@ -70,6 +70,7 @@ class HomeViewController: UIViewController {
         return UIAlertAction(title: "Отмена", style: .default)
     }
 }
+
 //    MARK: - UICollectionViewDataSource Methods
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
