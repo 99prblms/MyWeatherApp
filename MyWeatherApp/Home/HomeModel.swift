@@ -29,22 +29,4 @@ class HomeModel {
 //        self.mainView.tableView.reloadData()
     }
     
-    public func checkBD() {
-        let mass = CoreDataManager.shared.fetchCitysBD()
-        if !mass.isEmpty {
-            for str in mass {
-                guard let cityNamed = str.cityNamed else {
-                    continue
-                }
-                networkData.fetchCity(searchCity: cityNamed) { cityResults in
-                    if let city = cityResults {
-                        self.citiesApiMass.append(city)
-//                        self.mainView.tableView.reloadData()
-                    } else {
-                    }
-                }
-            }
-        }
-    }
-    
 }
