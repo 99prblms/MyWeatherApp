@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     lazy var mainApi = ApiManager()
     var networkData = DataFetcher()
     var citiesApiMass = [WeatherData]()
-//    var idMass = [UUID]()
     let id = UUID()
     
     // MARK: - HomeViewController Life Cycles
