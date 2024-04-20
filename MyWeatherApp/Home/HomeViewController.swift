@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
     var networkData = DataFetcher()
     var citiesApiMass = [WeatherData]()
     let id = UUID()
-    // test1
     
     // MARK: - HomeViewController Life Cycles
     
