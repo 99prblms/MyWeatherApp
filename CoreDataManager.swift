@@ -10,12 +10,9 @@ import CoreData
 
 //MARK: - CRUD CoreData
 
-var homeVC = HomeViewController()
-
 public final class CoreDataManager: NSObject {
     public static let shared = CoreDataManager()
-//    private override init() {}
-    public override init() {}
+    private override init() {}
     private var appDelegate: AppDelegate {
         UIApplication.shared.delegate as! AppDelegate
     }
@@ -82,24 +79,5 @@ public final class CoreDataManager: NSObject {
             context.delete(city)
         }
         appDelegate.saveContext()
-    }
-    
-    //MARK: - Check Base
-    public func checkBD() {
-        let mass = CoreDataManager.shared.fetchCitysBD()
-        if !mass.isEmpty {
-            for str in mass {
-                guard let cityNamed = str.cityNamed else {
-                    continue
-                }
-                homeVC.fetchCity(searchCity: cityNamed) { cityResults in
-                    if let city = cityResults {
-                        homeVC.citiesApiMass.append(city)
-                        homeVC.mainView.tableView.reloadData()
-                    } else {
-                    }
-                }
-            }
-        }
     }
 }
